@@ -1,6 +1,8 @@
+.idea/
 .profile_default/
 pickle/
 image_pickles/
+input/
 dask-worker-space/
 ### Python template
 # Byte-compiled / optimized / DLL files
