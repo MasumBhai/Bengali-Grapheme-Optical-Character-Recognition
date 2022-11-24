@@ -17,10 +17,16 @@
 
 Bengali is the 5th most spoken language in the world with hundreds of million of speakers. It’s the official language of Bangladesh and the second most spoken language in India. Considering its reach, there’s significant business and educational interest in developing AI that can optically recognize images of the language handwritten.
 
+### Dataset Link
+<a target="_blank" href="www.kaggle.com/masumbhai/bengali-grapheme-dataset-in-pickle-format">Masum's Kaggle Dataset Contribution</a>
 
-## Grapheme : The MultiClass Classifier
+### Grapheme : The MultiClass Classifier
 
 ![Grapheme Image](https://user-images.githubusercontent.com/53784551/194712190-c4e135fe-d90a-4cd6-abdb-b870b20772e0.png)
+
+## Acknowledgements
+
+- [Pytorch Predefined Model](https://github.com/Cadene/pretrained-models.pytorch)
 
 ## Feedback
 

@@ -28,7 +28,7 @@ class BengaliDatasetTrain:
                 # albumentations.ShiftScaleRotate(shift_limit=0.0625,
                 #                                scale_limit=0.1,
                 #                                rotate_limit=5,
-                #                                p=0.9),
+                #                                p=0.9), # probability
                 albumentations.Normalize(mean, std, always_apply=True)
             ])
 
@@ -42,7 +42,7 @@ class BengaliDatasetTrain:
         image = image.reshape(137, 236).astype(float) # reshapping the image given by the all image
         image = Image.fromarray(image).convert("RGB") # for PIL image
         image = self.aug(image=np.array(image))["image"] # for augmenting the images
-        image = np.transpose(image, (2, 0, 1)).astype(np.float32) # for torchVision model
+        image = np.transpose(image, (2, 0, 1)).astype(np.float32) # to fit the model into torchVision model
 
         return {
             "image": torch.tensor(image, dtype=torch.float),
