@@ -17,8 +17,8 @@ class ResNet34(nn.Module):
         self.layer2 = nn.Linear(512, 7)  # 7 consonants present in my dataset
 
     def forward(self, x): # also, need to modify the forward function from resnet class
-        bs, _, _, _ = x.shape()  # batchSize, channel, height & weights
-        x = self.model.featurs(x)  # this is i'm pulling from resnet structure
+        bs, _, _, _ = x.shape  # batchSize, channel, height & weights
+        x = self.model.features(x)  # this is i'm pulling from resnet structure
         x = F.adaptive_max_pool2d(x, 1).reshape(bs, -1)
         layer0 = self.layer0(x)
         layer1 = self.layer1(x)

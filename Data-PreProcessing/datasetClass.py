@@ -5,9 +5,11 @@ import numpy as np
 import torch
 from PIL import Image
 
+
 class BengaliDatasetTrain:
     def __init__(self, folds, img_height, img_width, mean, std):
-        df = pd.read_csv("../input/train_folds.csv")
+        df = pd.read_csv("../input/train_folds.csv")  # todo: this file is created in data_reading.ipynb, so change
+        # the location accordingly
         df = df[["image_id", "grapheme_root", "vowel_diacritic", "consonant_diacritic", "kfold"]]
 
         df = df[df.kfold.isin(folds)].reset_index(drop=True)
@@ -36,13 +38,12 @@ class BengaliDatasetTrain:
         return len(self.image_ids)
 
     def __getitem__(self, item):
-        # image = joblib.load(f"../input/image_pickle/{self.image_ids[item]}.pkl") #todo: change here
-        image = joblib.load(f"D:\\ML_Sessional\\pickle\\{self.image_ids[item]}.pkl") #todo: change here
+        image = joblib.load(f"D:\\ML_Sessional\\pickle\\{self.image_ids[item]}.pkl")  # todo: change here
 
-        image = image.reshape(137, 236).astype(float) # reshapping the image given by the all image
-        image = Image.fromarray(image).convert("RGB") # for PIL image
-        image = self.aug(image=np.array(image))["image"] # for augmenting the images
-        image = np.transpose(image, (2, 0, 1)).astype(np.float32) # to fit the model into torchVision model
+        image = image.reshape(137, 236).astype(float)  # reshaping the image given by the all image
+        image = Image.fromarray(image).convert("RGB")  # for PIL image
+        image = self.aug(image=np.array(image))["image"]  # for augmenting the images
+        image = np.transpose(image, (2, 0, 1)).astype(np.float32)  # to fit the model into torchVision model
 
         return {
             "image": torch.tensor(image, dtype=torch.float),
